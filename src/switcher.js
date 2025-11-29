@@ -22,14 +22,29 @@ function showDialog(){
 		gdialog.appendChild(formEl);
 		gselectEl = formEl.querySelector('select');
 		var opts = '';
-		for(var i = 0; i < gthemes.length; ++i){
-			var opt = gthemes[i];
-			var optEl = document.createElement('option');
-			if(opt === gtheme){
-				optEl.selected = true;
+		if(gthemes instanceof Array){
+			for(var i = 0; i < gthemes.length; ++i){
+				var opt = gthemes[i];
+				var optEl = document.createElement('option');
+				if(opt === gtheme){
+					optEl.selected = true;
+				}
+				optEl.innerHTML = opt;
+				gselectEl.appendChild(optEl);
 			}
-			optEl.innerHTML = opt;
-			gselectEl.appendChild(optEl);
+		}else{
+			for(var i in gthemes){
+				if(gthemes.hasOwnProperty(i)){
+					var opt = gthemes[i];
+					var optEl = document.createElement('option');
+					if(i === gtheme){
+						optEl.selected = true;
+					}
+					optEl.value = i;
+					optEl.innerHTML = opt;
+					gselectEl.appendChild(optEl);
+				}
+			}
 		}
 		gselectEl.addEventListener('change', setTheme);
 		formEl.addEventListener('submit', setTheme);
