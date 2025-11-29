@@ -10,7 +10,6 @@ export default function load(
 ){
 	var theme = (window.localStorage && localStorage.getItem('tjm-theme')) || defaultTheme;
 	if(theme){
-		console.log('have theme', theme);
 		if(cssPath){
 			var styleEl = document.querySelector(cssSelector || 'link[rel="stylesheet"]');
 			if(styleEl){
