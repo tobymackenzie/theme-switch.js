@@ -20,6 +20,7 @@ export default function load(
 		}
 		if(jsPath){
 			var jsEl = document.createElement('script');
+			jsEl.async = true;
 			jsEl.src = jsPath + '/' + theme + '.js';
 			var target = document.head || document.body;
 			target.appendChild(jsEl);
