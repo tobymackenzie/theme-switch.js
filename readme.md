@@ -1,7 +1,7 @@
 theme-switch.js
 =======
 
-Simple theme switcher for websites.  Designed to be lightweight and static site compatible.
+Simple theme switcher for websites.  Designed to be lightweight and static site compatible.  [See the demo](https://tobymackenzie.github.io/theme-switch.js/).
 
 Works by replacing a stylesheet href with another based on a configured base path and a name selected from a dropdown.  Also can load a JS file in the same manner, if configured.  A singleton, only one per page.
 
