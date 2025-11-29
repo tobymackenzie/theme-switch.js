@@ -9,7 +9,6 @@ export default function load(
 	defaultTheme
 ){
 	var theme = (window.localStorage && localStorage.getItem('tjm-theme')) || defaultTheme;
-	console.log(localStorage.getItem('tjm-theme'));
 	if(theme){
 		console.log('have theme', theme);
 		if(cssPath){
