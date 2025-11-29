@@ -1,0 +1,11 @@
+{
+	"name": "@tobymackenzie/theme-switch",
+	"license": "0BSD",
+	"main": "themeSwitcher.js",
+	"type": "module",
+	"files": [
+		"license.md",
+		"readme.md",
+		"src/"
+	]
+}

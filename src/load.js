@@ -1,0 +1,28 @@
+export default function load(
+	//- path to CSS folder with themes CSS, named {theme}.css
+	cssPath,
+	//- path to JS folder with themes JS, named {theme}.js
+	jsPath,
+	//- selector of stylesheet el to modify, otherwise modifies first stylesheet
+	cssSelector,
+	//- default theme key.  If set, will load default theme even if none is set
+	defaultTheme
+){
+	var theme = (window.localStorage && localStorage.getItem('tjm-theme')) || defaultTheme;
+	console.log(localStorage.getItem('tjm-theme'));
+	if(theme){
+		console.log('have theme', theme);
+		if(cssPath){
+			var styleEl = document.querySelector(cssSelector || 'link[rel="stylesheet"]');
+			if(styleEl){
+				styleEl.href = cssPath + '/' + theme + '.css';
+			}
+		}
+		if(jsPath){
+			var jsEl = document.createElement('script');
+			jsEl.src = jsPath + '/' + theme + '.js';
+			var target = document.head || document.body;
+			target.appendChild(jsEl);
+		}
+	}
+};
