@@ -113,6 +113,8 @@ export default function switcher(
 		btnWrap = btnWrap.firstChild;
 		if(!btnPlace){
 			btnPlace = document.body;
+		}else if(typeof btnPlace === 'string'){
+			btnPlace = document.querySelector(btnPlace);
 		}
 		btnPlace.appendChild(btnWrap);
 		btn = btnWrap.querySelector('a,button') || btnWrap;
