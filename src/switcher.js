@@ -3,6 +3,7 @@ var gform;
 var gisDialog = window.HTMLDialogElement ? true : false;
 var gselectEl;
 var gthemes;
+var gfirstTheme = 0;
 var gtheme
 function showDialog(){
 	if(!gdialog){
@@ -75,7 +76,7 @@ function closeDialog(){
 };
 function setTheme(){
 	var val = gselectEl.value;
-	if(val === gthemes[0]){
+	if(val === gfirstTheme){
 		//-# unsetting ensures user will get whatever the default is set to
 		localStorage.removeItem('tjm-theme');
 	}else{
@@ -97,6 +98,15 @@ export default function switcher(
 ){
 	if(themes && window.localStorage){
 		gthemes = themes;
+		//--get first key of themes for default check
+		if(themes instanceof Array){
+			gfirstTheme = themes[0];
+		}else{
+			for(var i in themes){
+				gfirstTheme = i;
+				break;
+			}
+		}
 		gform = form;
 		var btnWrap = document.createElement('div');
 		btnWrap.innerHTML = btn || '<button class="tjmThemeSwitchButton">Switch theme</button>';
