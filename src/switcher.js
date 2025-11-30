@@ -93,6 +93,8 @@ export default function switcher(
 	btn,
 	//- string selector: location to stick button
 	btnPlace,
+	//- method for inserting btn
+	btnMethod,
 	//- string: HTML of form in dialog, first select will have theme options inserted
 	form
 ){
@@ -116,7 +118,11 @@ export default function switcher(
 		}else if(typeof btnPlace === 'string'){
 			btnPlace = document.querySelector(btnPlace);
 		}
-		btnPlace.appendChild(btnWrap);
+		if(btnMethod === 'insertBefore' || btnMethod === 'insertAfter'){
+			btnPlace.parentNode[btnMethod](btnWrap, btnPlace);
+		}else{
+			btnPlace[btnMethod || 'appendChild'](btnWrap);
+		}
 		btn = btnWrap.querySelector('a,button') || btnWrap;
 		btn.addEventListener('click', function(){
 			showDialog();
