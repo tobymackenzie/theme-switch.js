@@ -19,6 +19,7 @@ function showDialog(){
 
 		//--set up form
 		var formEl = document.createElement('form');
+		formEl.classList.add('tjmThemeSwitch');
 		formEl.innerHTML = gform || '<label>Switch theme</label> <select><select>';
 		gdialog.appendChild(formEl);
 		gselectEl = formEl.querySelector('select');
