@@ -11,5 +11,6 @@ switcher(
 		'light-green': 'Light Green',
 		'red': 'Red',
 		'yellow': 'Yellow',
+		'': '--None--',
 	}
 );

@@ -8,15 +8,19 @@ export default function load(
 	//- default theme key.  If set, will load default theme even if none is set
 	defaultTheme
 ){
-	var theme = (window.localStorage && localStorage.getItem('tjm-theme')) || defaultTheme;
-	if(theme){
+	var theme = (window.localStorage && localStorage.getItem('tjm-theme') !== null ? localStorage.getItem('tjm-theme') : defaultTheme);
+	if(typeof theme === 'string'){
 		if(cssPath){
 			var styleEl = document.querySelector(cssSelector || 'link[rel="stylesheet"]');
 			if(styleEl){
-				styleEl.href = cssPath + '/' + theme + '.css';
+				if(theme){
+					styleEl.href = cssPath + '/' + theme + '.css';
+				}else{
+					styleEl.disabled = true;
+				}
 			}
 		}
-		if(jsPath){
+		if(jsPath && theme){
 			var jsEl = document.createElement('script');
 			jsEl.async = true;
 			jsEl.src = jsPath + '/' + theme + '.js';
