@@ -83,7 +83,11 @@ function setTheme(){
 	}else{
 		localStorage.setItem('tjm-theme', val);
 	}
-	location.reload();
+	if(window.TJM_THEMELOAD){
+		window.TJM_THEMELOAD(val);
+	}else{
+		location.reload();
+	}
 };
 /*==
 */
