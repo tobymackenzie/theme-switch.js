@@ -3,7 +3,75 @@
 <link rel="stylesheet" href="./_styles.css" />
 <link rel="stylesheet" href="./_theme/default.css" class="theme" />
 <script src="./_pre.js" type="module"></script>
-<h1>theme-switch.js demo</h1>
-<p>Lorem ipsum dolor sit amet.  Nonummy.  Be excellent to each other.</p>
-<p><a href="https://github.com/tobymackenzie/theme-switch.js">See project repo</a>.</p>
+<main>
+	<h1>theme-switch.js demo</h1>
+	<p>Lorem ipsum dolor sit amet.  Nonummy.  Be excellent to each other.</p>
+	<p><a href="https://github.com/tobymackenzie/theme-switch.js">See project repo</a>.</p>
+	<p>Lorem ipsum <a href="https://www.lipsum.com/">dolor sit amet</a>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<section>
+		<h2>Blog</h2>
+		<ul>
+			<li><a href="/blog/2024/07/26/site-partially-static">Site partially static</a> (2024 in WWW)</li>
+			<li><a href="/blog/2023/12/27/bumping-version-tags-with-git">Bumping version tags with git</a> (2023 in WWW)</li>
+			<li><a href="/blog/2023/02/25/css-wishlist">CSS Wishlist</a> (2023 in WWW)</li>
+			<li><a href="/blog/2022/11/23/idea-declarative-alternative-to-js">Ideas: Cascading Behavior Sheets, a declarative alternative to JS</a> (2022 in WWW)</li>
+			<li><a href="/blog/2020/09/19/simple-mysql-backup-script">Simple MySQL backup script</a> (2020 in WWW)</li>
+			<li><a href="/blog/2019/09/30/forcing-https-progressive-enhancement">Forcing HTTPS and progressive enhancement</a> (2019 in WWW)</li>
+			<li><a href="/blog/2018/12/26/website-snow-script">Website Snow Script</a> (2018 in WWW)</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Quotes</h2>
+		<blockquote>Be excellent to each other</blockquote>
+		<div class="attribution">- Abraham Lincoln<br /> &amp; Ted "Theodore" Logan,<br /> <i>Bill &amp; Ted's Excellent Adventure</i></div>
+	</section>
+	<section>
+		<h2>Code</h2>
+		<h3>HTML</h3>
+		<pre><code class="language-html">&lt;div class="switchField field"&gt;
+	&lt;span class="fieldWidget"&gt;
+		&lt;input class="fieldControl" id="f-switch" name="switch" type="checkbox" /&gt;
+		&lt;i&gt;&lt;/i&gt;
+	&lt;/span&gt;
+	&lt;span class="fieldLabel"&gt;&lt;label for="f-switch"&gt;Switch me&lt;/label&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+		<h3>CSS</h3>
+		<pre><code class="language-css">*{
+	box-sizing: border-box;
+}
+.box{
+	border-bottom: 3px dotted black;
+	padding: 1em;
+}
+.boxes{
+	margin-bottom: -3px;
+}
+.boxesWrap{
+	overflow: hidden;
+}
+@media screen and (min-width: 38em){
+	.box{
+		border-right: 3px dotted black;
+	}
+	.boxes{
+		display: grid;
+		flex-wrap: wrap;
+		grid-template-columns: repeat(2, 1fr);
+		 margin-right: -3px;
+	}
+}
+@media screen and (min-width: 48em){
+	.boxes{
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media screen and (min-width: 60em){
+	.boxes{
+		grid-template-columns: repeat(4, 1fr);
+	}
+}</code></pre>
+		<h3>Shell</h3>
+		<pre><code class="language-sh">grep -E '(fatal error|Fatal|Critical|internal redir|PHP Parse|Stack trace)' /var/log/{apache2,httpd}/*error.log 2&gt; /dev/null </code></pre>
+	</section>
+	</main>
 <script src="./_post.js" type="module" async></script>
