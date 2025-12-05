@@ -5,7 +5,11 @@ function loadCss(theme){
 	var styleEl = document.querySelector(gcssSelector || 'link[rel="stylesheet"]');
 	if(styleEl){
 		if(theme){
-			styleEl.href = gcssPath + '/' + theme + '.css';
+			//--use built URL unless theme value is a URL, determined by '//' presence
+			styleEl.href = theme.indexOf('//') === -1
+				? gcssPath + '/' + theme + '.css'
+				: theme
+			;
 			if(styleEl.disabled){
 				styleEl.disabled = false;
 			}
@@ -29,10 +33,12 @@ export default function load(
 	gcssPath = cssPath;
 	var theme = (window.localStorage && localStorage.getItem('tjm-theme') !== null ? localStorage.getItem('tjm-theme') : gdefaultTheme);
 	if(typeof theme === 'string'){
-		if(cssPath){
+		//-# can load URL without cssPath
+		if(cssPath || theme.indexOf('//') !== -1){
 			loadCss(theme);
 		}
-		if(jsPath && theme){
+		//--load JS if path configured, we have theme, and it isn't a URL, since that can only work for one file and that has to be CSS
+		if(jsPath && theme && theme.indexOf('//') === -1){
 			var jsEl = document.createElement('script');
 			jsEl.async = true;
 			jsEl.src = jsPath + '/' + theme + '.js';
