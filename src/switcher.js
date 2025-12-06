@@ -23,31 +23,7 @@ function showDialog(){
 		formEl.innerHTML = gform || '<label>Switch theme</label> <select><select>';
 		gdialog.appendChild(formEl);
 		gselectEl = formEl.querySelector('select');
-		var opts = '';
-		if(gthemes instanceof Array){
-			for(var i = 0; i < gthemes.length; ++i){
-				var opt = gthemes[i];
-				var optEl = document.createElement('option');
-				if(opt === gtheme){
-					optEl.selected = true;
-				}
-				optEl.innerHTML = opt;
-				gselectEl.appendChild(optEl);
-			}
-		}else{
-			for(var i in gthemes){
-				if(gthemes.hasOwnProperty(i)){
-					var opt = gthemes[i];
-					var optEl = document.createElement('option');
-					if(i === gtheme){
-						optEl.selected = true;
-					}
-					optEl.value = i;
-					optEl.innerHTML = opt;
-					gselectEl.appendChild(optEl);
-				}
-			}
-		}
+		buildOpts(gthemes, gselectEl);
 		gselectEl.addEventListener('change', setTheme);
 		formEl.addEventListener('submit', setTheme);
 
@@ -89,6 +65,38 @@ function setTheme(){
 		location.reload();
 	}
 };
+//==
+function buildOpt(opt, value, parnt){
+	var optType = typeof opt === 'object' ? 'optgroup' : 'option';
+	var optEl = document.createElement(optType);
+	if(optType === 'option'){
+		if(opt === gtheme){
+			optEl.selected = true;
+		}
+		if(value !== null){
+			optEl.value = value;
+		}
+		optEl.innerHTML = opt;
+	}else{
+		optEl.label = value;
+		buildOpts(opt, optEl);
+	}
+	parnt.appendChild(optEl);
+};
+function buildOpts(opts, parnt){
+	if(opts instanceof Array){
+		for(var i = 0; i < opts.length; ++i){
+			buildOpt(opts[i], null, parnt);
+		}
+	}else{
+		for(var i in opts){
+			if(opts.hasOwnProperty(i)){
+				buildOpt(opts[i], i, parnt);
+			}
+		}
+	}
+};
+
 /*==
 */
 export default function switcher(

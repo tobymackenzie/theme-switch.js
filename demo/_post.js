@@ -12,10 +12,12 @@ switcher(
 		'red': 'Red',
 		'yellow': 'Yellow',
 		'': '--None--',
-		'https://unpkg.com/magick.css': 'Magick CSS',
-		'https://unpkg.com/papercss@1.9.2/dist/paper.min.css': 'Paper CSS',
-		'https://cdn.simplecss.org/simple.min.css': 'Simple CSS',
-		'https://www.w3.org/StyleSheets/Core/Chocolate': 'W3C Chocolate',
-		'https://www.w3.org/StyleSheets/Core/Modernist': 'W3C Modernist'
+		'Third Party': {
+			'https://unpkg.com/magick.css': 'Magick CSS',
+			'https://unpkg.com/papercss@1.9.2/dist/paper.min.css': 'Paper CSS',
+			'https://cdn.simplecss.org/simple.min.css': 'Simple CSS',
+			'https://www.w3.org/StyleSheets/Core/Chocolate': 'W3C Chocolate',
+			'https://www.w3.org/StyleSheets/Core/Modernist': 'W3C Modernist'
+		}
 	}
 );
