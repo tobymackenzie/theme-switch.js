@@ -70,7 +70,7 @@ function buildOpt(opt, value, parnt){
 	var optType = typeof opt === 'object' ? 'optgroup' : 'option';
 	var optEl = document.createElement(optType);
 	if(optType === 'option'){
-		if(opt === gtheme){
+		if((value === null ? opt : value) === gtheme){
 			optEl.selected = true;
 		}
 		if(value !== null){
