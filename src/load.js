@@ -45,9 +45,9 @@ function load(
 			var target = document.head || document.body;
 			target.appendChild(jsEl);
 		}
-		if(!jsPath){
-			window.TJM_THEMELOAD = loadCss;
-		}
+	}
+	if(!jsPath){
+		window.TJM_THEMELOAD = loadCss;
 	}
 };
 export default window.localStorage ? load : function(){};
