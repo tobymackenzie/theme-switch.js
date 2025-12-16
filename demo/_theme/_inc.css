@@ -1,6 +1,15 @@
+*{
+	box-sizing: border-box;
+}
 html{
 	background: black;
 	color: white;
 	font-size: 22px;
 }
-
+pre code{
+	border: 1px solid;
+	display: block;
+	max-width: 100%;
+	padding: 0.5em;
+	overflow: auto;
+}
