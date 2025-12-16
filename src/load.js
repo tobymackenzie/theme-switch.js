@@ -1,6 +1,5 @@
 var gcssPath;
 var gcssSelector;
-var gdefaultTheme
 function loadCss(theme){
 	var styleEl = document.querySelector(gcssSelector || 'link[rel="stylesheet"]');
 	if(styleEl){
@@ -28,10 +27,9 @@ function load(
 	//- default theme key.  If set, will load default theme even if none is set
 	defaultTheme
 ){
-	gdefaultTheme = defaultTheme;
 	gcssSelector = cssSelector;
 	gcssPath = cssPath;
-	var theme = (localStorage.getItem('tjm-theme') !== null ? localStorage.getItem('tjm-theme') : gdefaultTheme);
+	var theme = (localStorage.getItem('tjm-theme') !== null ? localStorage.getItem('tjm-theme') : defaultTheme);
 	if(typeof theme === 'string'){
 		//-# can load URL without cssPath
 		if(cssPath || theme.indexOf('//') !== -1){
