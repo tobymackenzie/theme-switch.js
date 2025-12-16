@@ -18,7 +18,7 @@ function loadCss(theme){
 		}
 	}
 };
-export default function load(
+function load(
 	//- path to CSS folder with themes CSS, named {theme}.css
 	cssPath,
 	//- path to JS folder with themes JS, named {theme}.js
@@ -31,7 +31,7 @@ export default function load(
 	gdefaultTheme = defaultTheme;
 	gcssSelector = cssSelector;
 	gcssPath = cssPath;
-	var theme = (window.localStorage && localStorage.getItem('tjm-theme') !== null ? localStorage.getItem('tjm-theme') : gdefaultTheme);
+	var theme = (localStorage.getItem('tjm-theme') !== null ? localStorage.getItem('tjm-theme') : gdefaultTheme);
 	if(typeof theme === 'string'){
 		//-# can load URL without cssPath
 		if(cssPath || theme.indexOf('//') !== -1){
@@ -50,3 +50,4 @@ export default function load(
 		}
 	}
 };
+export default window.localStorage ? load : function(){};
