@@ -4,11 +4,19 @@ var gisDialog = window.HTMLDialogElement ? true : false;
 var gselectEl;
 var gthemes;
 var gfirstTheme = 0;
-var gtheme
+var gtheme;
+var gkey = 'tjm-theme';
+//-# fallback in memory "localStorage" for old browsers
+var localStorage = window.localStorage || {
+	t: null,
+	getItem: function(){ return this.t; },
+	setItem: function(name, val){ this.t = val; },
+	removeItem: function(){ this.t = null; },
+};
 function showDialog(){
 	if(!gdialog){
 		if(!gtheme){
-			gtheme = localStorage.getItem('tjm-theme');
+			gtheme = localStorage.getItem(gkey);
 		}
 		//--set up dialog
 		gdialog = document.createElement(gisDialog ? 'dialog' : 'div');
@@ -55,9 +63,9 @@ function setTheme(){
 	var val = gselectEl.value;
 	if(val === gfirstTheme){
 		//-# unsetting ensures user will get whatever the default is set to
-		localStorage.removeItem('tjm-theme');
+		localStorage.removeItem(gkey);
 	}else{
-		localStorage.setItem('tjm-theme', val);
+		localStorage.setItem(gkey, val);
 	}
 	if(window.TJM_THEMELOAD){
 		window.TJM_THEMELOAD(val);
@@ -111,7 +119,7 @@ export default function switcher(
 	//- string: HTML of form in dialog, first select will have theme options inserted
 	form
 ){
-	if(themes && window.localStorage){
+	if(themes && document.addEventListener){
 		gthemes = themes;
 		//--get first key of themes for default check
 		if(themes instanceof Array){
