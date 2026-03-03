@@ -5,11 +5,24 @@ function loadCss(theme){
 	if(styleEl){
 		if(theme){
 			//--use built URL unless theme value is a URL, determined by '//' presence
-			styleEl.href = theme.indexOf('//') === -1
+			var newTheme = theme.indexOf('//') === -1
 				? gcssPath + '/' + theme + '.css'
 				: theme
 			;
-			if(styleEl.disabled){
+			if(newTheme !== styleEl.href){
+				//-# create clone el because we can get a flash of unstyled content otherwise
+				//-# this is kinda heavy though.  Any other way?
+				var container = styleEl.parentNode;
+				var newEl = styleEl.cloneNode();
+				newEl.href = newTheme;
+				if(newEl.disabled){
+					newEl.disabled = false;
+				}
+				newEl.onload = function(){
+					container.removeChild(styleEl);
+				};
+				container.insertBefore(newEl, styleEl);
+			}else{
 				styleEl.disabled = false;
 			}
 		}else{
