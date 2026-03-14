@@ -42,6 +42,15 @@ function load(
 	gcssPath = cssPath;
 	if(window.localStorage){
 		var theme = localStorage.getItem('tjm-theme');
+		dev: {
+			//--allow overriding theme in query string for easy dev.  don't allow URLs to prevent nefarious use
+			//-# use rollup strip plugin or similar to remove from production builds
+			var parm;
+			if(window.URLSearchParams && (parm = new URLSearchParams(location.search)) && parm.has('theme') && parm.get('theme').indexOf('//') === -1){
+				theme = parm.get('theme');
+			}
+
+		}
 		if(typeof theme === 'string'){
 			loadCss(theme);
 			//--load JS if path configured, we have theme, and it isn't a URL, since that can only work for one file and that has to be CSS
